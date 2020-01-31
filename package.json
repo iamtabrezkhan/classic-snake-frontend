@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pushHeroku": "git push --force https://heroku:87b57ee1-6ad2-4e4d-9300-0bc89055d99d@git.heroku.com/hungry-snake.git refs/remotes/origin/development:refs/heads/master"
+    "pushHeroku": "git push --force https://heroku:87b57ee1-6ad2-4e4d-9300-0bc89055d99d@git.heroku.com/hungry-snake.git master"
   },
   "eslintConfig": {
     "extends": "react-app"
