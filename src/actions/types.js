@@ -1,0 +1,6 @@
+export const CHANGE_DIRECTION = 'CHANGE_DIRECTION'
+export const GAME_START = 'GAME_START'
+export const GAME_OVER = 'GAME_OVER'
+export const REMOVE_TAIL = 'REMOVE_TAIL'
+export const ADD_HEAD = 'ADD_HEAD'
+export const CHANGE_FOOD = 'CHANGE_FOOD'
