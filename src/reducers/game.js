@@ -4,13 +4,15 @@ import {
     GAME_OVER,
     REMOVE_TAIL,
     ADD_HEAD,
-    CHANGE_FOOD
+    CHANGE_FOOD,
+    INIT_GAME
 } from '../actions/types'
 import {getRandomBetween} from '../utils/helper'
 
 const someDefaults = {
     unit: 20,
-    boxPerUnit: 25
+    boxesPerWidth: 25,
+    boxesPerHeight: 20
 }
 
 const initialState = {
@@ -30,22 +32,22 @@ const initialState = {
         }
     ],
     playground: {
-        width: someDefaults.unit*someDefaults.boxPerUnit,
-        height: someDefaults.unit*someDefaults.boxPerUnit
+        width: someDefaults.unit*someDefaults.boxesPerWidth,
+        height: someDefaults.unit*someDefaults.boxesPerHeight
     },
     isGameOver: false,
     isGameStart: false,
     direction: 'DOWN',
     food: {
-        x: Math.floor(Math.random()*someDefaults.boxPerUnit)*someDefaults.unit,
-        y: Math.floor(Math.random()*someDefaults.boxPerUnit)*someDefaults.unit
+        x: Math.floor(Math.random()*someDefaults.boxesPerWidth)*someDefaults.unit,
+        y: Math.floor(Math.random()*someDefaults.boxesPerHeight)*someDefaults.unit
     },
     score: 0,
     foodIndex: getRandomBetween(1, 4),
     maxScore: JSON.parse(localStorage.getItem('maxScore')) || 0
 }
 
-export function game(state=initialState, action) {
+export default function (state=initialState, action) {
     switch(action.type) {
         case CHANGE_DIRECTION: {
             return {
@@ -59,8 +61,8 @@ export function game(state=initialState, action) {
                 ...initialState,
                 isGameStart: true,
                 food: {
-                    x: Math.floor(Math.random()*someDefaults.boxPerUnit)*someDefaults.unit,
-                    y: Math.floor(Math.random()*someDefaults.boxPerUnit)*someDefaults.unit
+                    x: Math.floor(Math.random()*someDefaults.boxesPerWidth)*someDefaults.unit,
+                    y: Math.floor(Math.random()*someDefaults.boxesPerHeight)*someDefaults.unit
                 },
                 foodIndex: getRandomBetween(1, 4),
                 maxScore: JSON.parse(localStorage.getItem('maxScore')) || 0
@@ -92,8 +94,8 @@ export function game(state=initialState, action) {
         }
         case CHANGE_FOOD: {
             let food = {
-                x: Math.floor(Math.random()*someDefaults.boxPerUnit)*someDefaults.unit,
-                y: Math.floor(Math.random()*someDefaults.boxPerUnit)*someDefaults.unit
+                x: Math.floor(Math.random()*someDefaults.boxesPerWidth)*someDefaults.unit,
+                y: Math.floor(Math.random()*someDefaults.boxesPerHeight)*someDefaults.unit
             }
             if((state.score+5) > state.maxScore) localStorage.setItem('maxScore', JSON.stringify(state.score+5))
             return {
@@ -101,6 +103,16 @@ export function game(state=initialState, action) {
                 food: food,
                 score: state.score + 5,
                 foodIndex: getRandomBetween(1, 4)
+            }
+        }
+        case INIT_GAME: {
+            return {
+                ...state,
+                isGameStart: false,
+                isGameOver: false,
+                snake: initialState.snake,
+                score: 0,
+                food: initialState.food
             }
         }
         default: {

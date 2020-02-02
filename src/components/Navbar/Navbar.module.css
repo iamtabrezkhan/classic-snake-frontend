@@ -1,0 +1,45 @@
+.main {
+    width: calc(100% - 20px);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+    max-width: 1350px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+}
+
+.logo img {
+    width: 100%;
+    display: block;
+}
+
+.menu {
+    margin-left: auto;
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu ul li {
+    float: left;
+    margin-right: 10px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #646464;
+}
+
+.menu ul li a:hover {
+    color: var(--color-primary-green);
+}

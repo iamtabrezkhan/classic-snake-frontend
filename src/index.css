@@ -1,6 +1,12 @@
 :root {
   font-size: 16px;
   --color-playground: #ffffff;
+  --color-primary-green: #249b46;
+  --color-gray-1: #eeeeee;
+  --color-gray-2: #dadada;
+  --color-gray-8: #6b6b6b;
+  --color-gray-9: #4e4e4e;
+  --color-gray-10: #2e2e2e;
 }
 
 body {
@@ -15,4 +21,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+button {
+  outline: none;
 }

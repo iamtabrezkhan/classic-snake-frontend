@@ -4,7 +4,8 @@ import {
     GAME_START,
     REMOVE_TAIL,
     ADD_HEAD,
-    CHANGE_FOOD
+    CHANGE_FOOD,
+    INIT_GAME
 } from './types'
 
 export function startGame() {
@@ -13,9 +14,10 @@ export function startGame() {
     }
 }
 
-export function gameOver() {
+export function gameOver(score) {
     return {
-        type: GAME_OVER
+        type: GAME_OVER,
+        score
     }
 }
 
@@ -43,5 +45,11 @@ export function changeDirection(direction) {
 export function changeFood() {
     return {
         type: CHANGE_FOOD
+    }
+}
+
+export function initGame() {
+    return {
+        type: INIT_GAME
     }
 }
